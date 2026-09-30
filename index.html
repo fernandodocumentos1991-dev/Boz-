@@ -41,30 +41,35 @@ input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(56,189,248,.1)}
 .tabs{display:flex;gap:5px;overflow:auto;margin:0 0 7px;padding-bottom:2px}.tab{white-space:nowrap;border:1px solid rgba(148,163,184,.18);background:rgba(255,255,255,.045);color:#cbd5e1;border-radius:999px;padding:5px 9px;font-weight:850;font-size:10px}.tab.active{background:rgba(56,189,248,.14);color:#e0f2fe;border-color:rgba(56,189,248,.45);box-shadow:0 0 15px rgba(56,189,248,.1)}
 .boards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;align-items:start}
 .player-card{
-  --player-bg:#eaf4ff;--player-border:#60a5fa;--player-accent:#38bdf8;
-  background:linear-gradient(145deg,var(--player-bg),rgba(255,255,255,.96)) !important;
+  --player-bg:#eaf3fb;--player-border:#bfdaf5;--player-accent:#0ea5e9;
+  background:linear-gradient(145deg,var(--player-bg),rgba(214,227,241,.96)) !important;
   color:#172033;border:2px solid var(--player-border) !important;border-radius:15px;
-  padding:7px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 8px 25px rgba(0,0,0,.22),0 0 20px color-mix(in srgb,var(--player-accent) 16%,transparent);
-  overflow:hidden;position:relative
+  padding:7px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 8px 25px rgba(0,0,0,.18),0 0 20px color-mix(in srgb,var(--player-accent) 18%,transparent);
+  overflow:hidden;position:relative;transition:opacity .15s ease,box-shadow .15s ease,transform .15s ease
 }
+.player-card.active{box-shadow:0 0 0 1px rgba(255,255,255,.08),0 12px 28px rgba(14,165,233,.18),0 0 24px color-mix(in srgb,var(--player-accent) 22%,transparent);transform:translateY(-1px)}
+.player-card.inactive{opacity:.58;filter:saturate(.75)}
 .player-card:before{content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--player-accent);box-shadow:0 0 12px var(--player-accent)}
-.player-card.player-0{--player-bg:#e8f4ff;--player-border:#60a5fa;--player-accent:#0ea5e9}
-.player-card.player-1{--player-bg:#eaf9ef;--player-border:#4ade80;--player-accent:#16a34a}
-.player-card.player-2{--player-bg:#fff4e5;--player-border:#fb923c;--player-accent:#ea580c}
-.player-card.player-3{--player-bg:#f3edff;--player-border:#a78bfa;--player-accent:#7c3aed}
-.player-card.player-4{--player-bg:#f1f0e8;--player-border:#a8b49a;--player-accent:#68745d}
-.player-card.player-5{--player-bg:#e9fbfa;--player-border:#2dd4bf;--player-accent:#0f766e}
-.player-card.player-6{--player-bg:#eef0ff;--player-border:#818cf8;--player-accent:#4f46e5}
-.player-card.player-7{--player-bg:#f6f3e6;--player-border:#b8b083;--player-accent:#827717}
+.player-card.player-0{--player-bg:#e8f7ff;--player-border:#93d7ff;--player-accent:#0b8fd8}
+.player-card.player-1{--player-bg:#ebf9ef;--player-border:#a4e2b2;--player-accent:#15914a}
+.player-card.player-2{--player-bg:#fff5ea;--player-border:#f5c889;--player-accent:#d86a0b}
+.player-card.player-3{--player-bg:#f4edff;--player-border:#d7c0ff;--player-accent:#6b2fd0}
+.player-card.player-4{--player-bg:#f0f3ee;--player-border:#d4dcc8;--player-accent:#5d6d4f}
+.player-card.player-5{--player-bg:#ebfffd;--player-border:#baf0ea;--player-accent:#0c7a73}
+.player-card.player-6{--player-bg:#f0f3ff;--player-border:#d9defe;--player-accent:#3a43d6}
+.player-card.player-7{--player-bg:#faf6eb;--player-border:#e8d8a8;--player-accent:#75640e}
 .player-dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--player-accent);margin-right:4px;box-shadow:0 0 7px var(--player-accent);vertical-align:1px}
-.board-wrap{overflow:hidden}.board{position:relative;max-width:none;margin:0;background:rgba(255,255,255,.58);min-height:0;border-radius:10px;padding:2px}
+.turn-badge{display:inline-block;margin-left:6px;padding:2px 6px;border-radius:999px;background:rgba(14,165,233,.14);color:#0f172a;border:1px solid rgba(14,165,233,.25);font-size:9px;font-weight:900;letter-spacing:.02em}
+.board-wrap{overflow:hidden}.board{position:relative;max-width:none;margin:0;background:rgba(209,220,234,.95);min-height:0;border-radius:10px;padding:2px;border:1px solid rgba(113,133,168,.22)}
 .board-grid{display:grid;grid-template-columns:1fr 1fr 1fr;grid-template-rows:repeat(4,40px)}
-.cell{position:relative;display:flex;align-items:center;justify-content:center;background:transparent;border:0;border-right:2px solid #263247;border-bottom:2px solid #263247;padding:3px;min-width:0;border-radius:0;color:#172033}
+.cell{position:relative;display:flex;align-items:center;justify-content:center;background:transparent;border:0;border-right:2px solid #263247;border-bottom:2px solid #263247;padding:3px;min-width:0;border-radius:0;color:#172033;text-align:center}
 .cell.side{grid-column:3;border-right:0}.cell.left{grid-column:1}.cell.mid{grid-column:2}
 .cell.a{grid-row:1}.cell.d{grid-row:2}.cell.t{grid-row:3}.cell.qd{grid-row:1}.cell.qn{grid-row:2}.cell.sn{grid-row:3}
 .cell.fu{grid-row:1}.cell.seq{grid-row:2}.cell.quad{grid-row:3}.cell.gen{grid-row:4;border-bottom:0}
-.cell-label{position:absolute;left:3px;top:2px;font-weight:900;font-size:7px;color:#334155;pointer-events:none}
-.cell-value{font-size:17px;font-weight:950;line-height:1}.cell-value.torar{color:var(--danger);font-size:25px;font-family:Arial,sans-serif}
+.cell-label{position:absolute;left:3px;top:2px;font-weight:900;font-size:7px;color:#334155;pointer-events:none;transition:all .15s ease;opacity:0;transform:translateY(-6px)}
+.cell:not(.empty) .cell-label{opacity:1;transform:translateY(0);font-size:7px}
+.cell.empty .cell-label{opacity:1;left:50%;top:50%;transform:translate(-50%,-50%);font-size:clamp(12px,1.8vw,18px);font-weight:800;letter-spacing:.02em;white-space:nowrap}
+.cell-value{display:flex;align-items:center;justify-content:center;width:100%;height:100%;font-size:clamp(18px,2.4vw,30px);font-weight:950;line-height:1;text-align:center;position:relative;z-index:1}.cell-value.torar{color:var(--danger);font-size:clamp(22px,2.8vw,34px);font-family:Arial,sans-serif}
 .cell:active{background:rgba(56,189,248,.13)}
 .board-note{font-size:8px;color:#64748b;text-align:center;margin-top:2px}
 .actions{display:flex;gap:6px;flex-wrap:wrap;margin:7px 0}
@@ -94,7 +99,9 @@ footer{padding:8px 0;text-align:center;color:#66758f;font-size:9px}
 <header>
   <div class="topbar">
     <h1>🎲 Bozó</h1>
-    <button class="iconbtn" id="wakeBtn" type="button">📱 Tela ligada</button>
+    <button class="primary" id="finalizeRoundTop" type="button">🏁 Finalizar</button>
+    <button class="secondary" id="playAgainTop" type="button">🔄 Jogar</button>
+    <button class="secondary" id="showHistoryTop" type="button">📊 Histórico</button>
     <button class="iconbtn" id="resetBtn" type="button">↺</button>
   </div>
   <div class="status" id="wakeStatus">A tela permanece ligada enquanto o navegador permitir.</div>
@@ -117,7 +124,7 @@ footer{padding:8px 0;text-align:center;color:#66758f;font-size:9px}
 <section id="game" class="hidden">
   <div class="hint" style="margin:2px 0 5px">Visão geral · cada jogador tem uma cor suave própria para identificar rapidamente cada folha.</div>
   <div id="finishBanner"></div>
-  <div class="actions" style="margin:4px 0 7px">
+  <div class="actions" style="margin:4px 0 7px; display:none">
     <button class="primary" id="finalizeRound" type="button">🏁 Finalizar jogada</button>
     <button class="secondary" id="playAgain" type="button">🔄 Jogar novamente</button>
     <button class="secondary" id="showHistory" type="button">📊 Histórico</button>
@@ -155,7 +162,7 @@ const RULES = [
   {id:'quadrada', name:'Quadrada', options:[30,35], cls:'quad side'},
   {id:'general', name:'General', options:[40,250], cls:'gen side'}
 ];
-let state = JSON.parse(localStorage.getItem('bozoState') || 'null') || {players:[],started:false,active:0,finished:false,winner:null,roundFinalized:false};
+let state = JSON.parse(localStorage.getItem('bozoState') || 'null') || {players:[],started:false,active:0,finished:false,winner:null,roundFinalized:false,lastMove:null};
 let history = JSON.parse(localStorage.getItem('bozoHistory') || '[]');
 
 let wakeLock = null;
@@ -164,6 +171,11 @@ const $ = id => document.getElementById(id);
 state.finished=false;
 state.winner=null;
 state.roundFinalized=!!state.roundFinalized;
+state.lastMove = state.lastMove || null;
+state.players = (state.players || []).map((p,i)=>({
+  ...p,
+  colorIndex: Number.isInteger(p.colorIndex) ? p.colorIndex : (i % 8)
+}));
 function save(){ localStorage.setItem('bozoState', JSON.stringify(state)); }
 function initials(name){
   const p=name.trim().split(/\s+/).filter(Boolean);
@@ -175,6 +187,10 @@ function leaderTotal(){
   return Math.max(...state.players.map(total));
 }
 function isLeader(p){ return total(p)===leaderTotal() && total(p)>0; }
+function nextPlayerIndex(currentIndex){
+  if(!state.players.length) return 0;
+  return (currentIndex + 1) % state.players.length;
+}
 
 function persistHistory(){
   localStorage.setItem('bozoHistory', JSON.stringify(history));
@@ -233,12 +249,17 @@ function playAgain(){
   if(!state.players.length) return;
   const ordered=[...state.players].map((p,i)=>({...p,_oldIndex:i,_total:total(p)}))
     .sort((a,b)=>b._total-a._total);
-  state.players=ordered.map(p=>({name:p.name,scores:{}}));
+  state.players=ordered.map(p=>({
+    name:p.name,
+    scores:{},
+    colorIndex: Number.isInteger(p.colorIndex) ? p.colorIndex : p._oldIndex % 8
+  }));
   state.started=true;
   state.active=0;
   state.finished=false;
   state.winner=null;
   state.roundFinalized=false;
+  state.lastMove=null;
   save();
   render();
 }
@@ -312,18 +333,28 @@ function boardHtml(p,i){
     return `<button class="cell ${r.cls} ${v===undefined?'empty':''}" type="button" onclick="openCell(${i},'${r.id}')">
       <span class="cell-label">${r.name}</span>${value}</button>`;
   }).join('');
-  return `<article class="player-card player-${i}">
-    <div class="scorebar"><div class="player-title"><span class="player-dot"></span>${escapeHtml(p.name)} <span class="hint">(${initials(p.name)})</span></div><div class="total" style="${isLeader(p)?'color:#16a34a':''}">${total(p)}</div></div>
-    <div class="board-wrap"><div class="board"><div class="board-grid">${cells}</div></div><div class="board-note">Toque numa casa vazia para marcar pontos ou TORAR.</div></div>
+  const isActive = i===state.active;
+  const colorIndex = Number.isInteger(p.colorIndex) ? p.colorIndex : (i % 8);
+  return `<article class="player-card player-${colorIndex} ${isActive ? 'active' : 'inactive'}">
+    <div class="scorebar"><div class="player-title"><span class="player-dot"></span>${escapeHtml(p.name)} <span class="hint">(${initials(p.name)})</span>${isActive ? '<span class="turn-badge">Sua vez</span>' : ''}</div><div class="total" style="${isLeader(p)?'color:#16a34a':''}">${total(p)}</div></div>
+    <div class="board-wrap"><div class="board"><div class="board-grid">${cells}</div></div><div class="board-note">${isActive ? 'Sua vez — escolha uma casa vazia.' : 'Aguarde a vez do jogador atual.'}</div></div>
   </article>`;
 }
 function openCell(pi,rid){
-  // Não bloqueamos as jogadas: qualquer marcação pode ser corrigida depois.
+  const canEditAnyCell = !!state.lastMove && state.lastMove.playerIndex !== pi;
+  if(pi !== state.active && !canEditAnyCell){
+    const nextName = state.players[state.active]?.name;
+    if(nextName){
+      alert(`É a vez de ${nextName}.`);
+    }
+    return;
+  }
   const p=state.players[pi], r=RULES.find(x=>x.id===rid);
-  if(p.scores[rid]!==undefined){
+  if(p.scores[rid]!==undefined && !canEditAnyCell){
     const current = p.scores[rid]==='TORAR' ? 'TORAR' : p.scores[rid];
     if(confirm(`Esta casa está marcada com ${current}. Deseja apagar para escolher outro valor?`)){
       delete p.scores[rid];
+      state.lastMove = null;
       save();
       render();
     }
@@ -341,8 +372,12 @@ function openCell(pi,rid){
     </div></div>`;
 }
 function setScore(pi,rid,value){
+  const shouldAdvanceTurn = !(state.lastMove && state.lastMove.playerIndex === pi && state.lastMove.cellId === rid);
   state.players[pi].scores[rid]=value;
-  state.active=pi;
+  state.lastMove = { playerIndex: pi, cellId: rid };
+  if(shouldAdvanceTurn){
+    state.active = nextPlayerIndex(pi);
+  }
   save();
   closeModal();
   render();
@@ -391,10 +426,11 @@ function removePlayer(i){
 }
 function addPlayer(){
   const input=$('playerInput'), name=input.value.trim(); if(!name)return;
-  state.players.push({name,scores:{}}); input.value=''; input.focus(); save(); render();
+  state.players.push({name,scores:{},colorIndex: state.players.length % 8});
+  input.value=''; input.focus(); save(); render();
 }
 function reset(){
-  state={players:[],started:false,active:0,finished:false,winner:null,roundFinalized:false};
+  state={players:[],started:false,active:0,finished:false,winner:null,roundFinalized:false,lastMove:null};
   save();
   render();
 }
@@ -409,13 +445,15 @@ async function requestWakeLock(){
   }catch(e){$('wakeStatus').textContent='Não foi possível manter a tela ligada neste momento.'}
 }
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible'&&state.started&&!wakeLock)requestWakeLock();});
-$('wakeBtn').onclick=requestWakeLock;
 $('addPlayer').onclick=addPlayer;
 $('playerInput').addEventListener('keydown',e=>{if(e.key==='Enter')addPlayer()});
-$('startGame').onclick=async()=>{state.started=true;state.active=0;save();render();await requestWakeLock();};
-$('editPlayers').onclick=()=>{state.started=false;save();render();};
+$('startGame').onclick=async()=>{state.started=true;state.active=0;state.lastMove=null;save();render();await requestWakeLock();};
+$('editPlayers').onclick=()=>{state.started=false;state.lastMove=null;save();render();};
 $('newGame').addEventListener('click', reset);
 $('resetBtn').addEventListener('click', reset);
+$('finalizeRoundTop').onclick=finalizeRound;
+$('playAgainTop').onclick=playAgain;
+$('showHistoryTop').onclick=showHistory;
 render();
 </script>
 </body>
